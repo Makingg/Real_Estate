@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | TirahanTech</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --tt-bg: #0c0a09;
+            --tt-panel: rgba(28, 25, 23, 0.78);
+            --tt-card: rgba(255, 255, 255, 0.05);
+            --tt-line: rgba(255, 255, 255, 0.1);
+            --tt-text: #f5f5f4;
+            --tt-muted: #d6d3d1;
+            --tt-accent: #fbbf24;
+            --tt-accent-dark: #0c0a09;
+            --tt-cyan: #a5f3fc;
+            --tt-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Instrument Sans", "Segoe UI", sans-serif;
+            color: var(--tt-text);
+            background:
+                radial-gradient(circle at top left, rgba(245, 158, 11, 0.28), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.24), transparent 30%),
+                linear-gradient(135deg, #1c1917, #0c0a09 55%, #111827);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .tt-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tt-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .tt-brand {
+            color: #fde68a;
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .tt-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tt-btn {
+            display: inline-block;
+            border: 1px solid var(--tt-line);
+            border-radius: 999px;
+            color: var(--tt-text);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 20px;
+            text-align: center;
+            transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+        }
+
+        .tt-btn:hover { transform: translateY(-1px); }
+
+        .tt-btn-primary {
+            background: var(--tt-accent);
+            border-color: transparent;
+            color: var(--tt-accent-dark);
+        }
+
+        .tt-main {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            padding: 56px 0 24px;
+        }
+
+        .tt-main-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tt-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .tt-eyebrow {
+            align-self: flex-start;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.24);
+            border-radius: 999px;
+            color: #fde68a;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 14px;
+        }
+
+        .tt-title {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 0.98;
+            margin: 0;
+            max-width: 760px;
+        }
+
+        .tt-lead {
+            color: var(--tt-muted);
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+            max-width: 760px;
+        }
+
+        .tt-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .tt-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        .tt-card {
+            background: var(--tt-card);
+            border: 1px solid var(--tt-line);
+            border-radius: 28px;
+            padding: 22px;
+            backdrop-filter: blur(16px);
+        }
+
+        .tt-card-title {
+            color: #fde68a;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+
+        .tt-card-copy {
+            color: var(--tt-muted);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .tt-panel {
+            background: var(--tt-panel);
+            border: 1px solid var(--tt-line);
+            border-radius: 34px;
+            box-shadow: var(--tt-shadow);
+            padding: 30px;
+            backdrop-filter: blur(18px);
+        }
+
+        .tt-label {
+            color: var(--tt-cyan);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .tt-section-title {
+            color: var(--tt-text);
+            font-size: 32px;
+            font-weight: 600;
+            margin: 14px 0 0;
+        }
+
+        .tt-stack {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 980px) {
+            .tt-main-grid,
+            .tt-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tt-shell { padding: 24px 18px; }
+            .tt-topbar { align-items: flex-start; flex-direction: column; }
+            .tt-actions { width: 100%; }
+            .tt-actions .tt-btn { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="tt-shell">
+        <header class="tt-topbar">
+            <a href="/" class="tt-brand">TirahanTech</a>
+            <div class="tt-actions">
+                <a href="/browse" class="tt-btn">Browse</a>
+                <a href="/login" class="tt-btn">Log in</a>
+                <a href="/register" class="tt-btn tt-btn-primary">Register</a>
+            </div>
+        </header>
+
+        <main class="tt-main">
+            <div class="tt-main-grid">
+                <section class="tt-copy">
+                    <div class="tt-eyebrow">Real estate made simple</div>
+                    <div>
+                        <h1 class="tt-title">Welcome to your next home-search experience.</h1>
+                        <p class="tt-lead">Discover properties, work with trusted agents, and manage every step of your search from one simple platform.</p>
+                    </div>
+
+                    <div class="tt-actions">
+                        <a href="/browse" class="tt-btn">Browse listings</a>
+                        <a href="/register" class="tt-btn tt-btn-primary">Create an account</a>
+                        <a href="/login" class="tt-btn">Already have an account?</a>
+                    </div>
+
+                    <div class="tt-grid tt-grid-3">
+                        <article class="tt-card">
+                            <h3 class="tt-card-title">Browse Properties</h3>
+                            <p class="tt-card-copy">Explore our curated collection of homes, apartments, and commercial properties with detailed information and high-quality images.</p>
+                        </article>
+                        <article class="tt-card">
+                            <h3 class="tt-card-title">Connect with Agents</h3>
+                            <p class="tt-card-copy">Get in touch with licensed real estate professionals who can guide you through the buying or selling process.</p>
+                        </article>
+                        <article class="tt-card">
+                            <h3 class="tt-card-title">Track Your Journey</h3>
+                            <p class="tt-card-copy">Keep all your property searches, inquiries, offers, and viewings organized in one convenient dashboard.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <aside class="tt-panel">
+                    <div class="tt-label">Why Choose Us</div>
+                    <h2 class="tt-section-title">Your property journey made simple.</h2>
+                    <div class="tt-stack">
+                        <section class="tt-card">
+                            <h3 class="tt-card-title">Verified Listings</h3>
+                            <p class="tt-card-copy">All properties are verified and approved by our team to ensure quality and accuracy.</p>
+                        </section>
+                        <section class="tt-card">
+                            <h3 class="tt-card-title">Secure Transactions</h3>
+                            <p class="tt-card-copy">Handle offers, negotiations, and paperwork through our secure platform with full tracking.</p>
+                        </section>
+                        <section class="tt-card">
+                            <h3 class="tt-card-title">Expert Support</h3>
+                            <p class="tt-card-copy">Get help from licensed agents and access to comprehensive property market insights.</p>
+                        </section>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
