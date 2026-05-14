@@ -7,7 +7,7 @@ curl \
 libpq-dev \
 libzip-dev \
 libonig-dev \
-libxml2-dev \
+libxml2-dev \base64:Lchst13WqDsPe7CiPxxO70YCPF88kNFmGiDl53jX+xA=
 libpng-dev \
 zip \
 && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip mbstring xml \
@@ -17,11 +17,9 @@ zip \
 RUN a2enmod rewrite
 # Make Apache use port 10000 (Render default)
 RUN sed -i 's/Listen 80/Listen 10000/g' /etc/apache2/ports.conf \
-&& sed -i 's/<VirtualHost \*:80>/<VirtualHost *:10000>/g' /etc/apache2/sites-
-available/000-default.conf
+&& sed -i 's/<VirtualHost \*:80>/<VirtualHost *:10000>/g' /etc/apache2/sites-available/000-default.conf
 # Set Laravel public as document root
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-
-available/000-default.conf \
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf \
 && sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
 # Allow .htaccess for Laravel
 RUN printf '<Directory /var/www/html/public>\n\
